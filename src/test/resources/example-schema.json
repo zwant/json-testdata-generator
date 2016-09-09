@@ -1,0 +1,88 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Product",
+  "description": "A product from Acme's catalog",
+  "type": "object",
+  "properties": {
+    "string_min_only": {
+      "description": "A string with a min requirement only",
+      "type": "string",
+      "minLength": 10
+    },
+    "string_max_only": {
+      "description": "A string with a max requirement only",
+      "type": "string",
+      "maxLength": 5
+    },
+    "string_min_and_max": {
+      "description": "A string with both a min and a max requirement",
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 3
+    },
+    "string_with_simple_pattern": {
+      "description": "A string with a pattern requirement",
+      "type": "string",
+      "pattern": "^[0-9]+"
+    },
+    "string_with_simple_pattern_and_min": {
+      "description": "A string with a pattern requirement and a min requirement",
+      "type": "string",
+      "pattern": "^[0-9]+",
+      "minLength": 5
+    },
+    "string_with_simple_pattern_and_max": {
+      "description": "A string with a pattern requirement and a max requirement",
+      "type": "string",
+      "pattern": "^[0-9]+",
+      "maxLength": 5
+    },
+    "string_with_simple_pattern_and_min_and_max": {
+      "description": "A string with a pattern requirement, a min requirement and a max requirement",
+      "type": "string",
+      "pattern": "^[0-9]+",
+      "minLength": 5,
+      "maxLength": 10
+    },
+    "string_with_more_complex_pattern": {
+      "description": "A string with a more complex pattern requirement",
+      "type": "string",
+      "pattern": "^(\\([0-9]{3}\\))?[0-9]{3}-[0-9]{4}$"
+    },
+    "int_min_only": {
+      "type": "integer",
+      "minimum": 10,
+      "exclusiveMinimum": true
+    },
+    "int_max_only": {
+      "type": "integer",
+      "maximum": 10
+    },
+    "int_min_and_max": {
+      "type": "integer",
+      "minimum": 5,
+      "maximum": 10
+    },
+    "array_min_and_unique": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "nested_object": {
+      "type": "object",
+      "properties": {
+        "required_string": {
+          "type": "string"
+        },
+        "optional_string": {
+          "type": "string"
+        }
+      },
+      "required": ["required_string"]
+    }
+  },
+  "required": ["nested_object"]
+}
