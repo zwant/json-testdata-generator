@@ -2,11 +2,11 @@ package se.paldan.json;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.everit.json.schema.ObjectSchema;
+import org.everit.json.schema.Schema;
 import org.everit.json.schema.loader.SchemaLoader;
 import org.json.JSONObject;
 import org.json.JSONTokener;
-import se.paldan.json.generators.ObjectGenerator;
+import se.paldan.json.generators.RootGenerator;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -22,9 +22,9 @@ public class Loader {
 
     public static JsonNode getJsonFromSchema(JSONObject schemaObject) {
         // Root schema will always be an ObjectSchema!
-        ObjectSchema rootSchema = (ObjectSchema) SchemaLoader.load(schemaObject);
+        Schema rootSchema = SchemaLoader.load(schemaObject);
 
-        return new ObjectGenerator().build(rootSchema);
+        return new RootGenerator().build(rootSchema);
     }
 
     public static JsonNode getJsonFromSchemaFile(InputStream inputStream) {
