@@ -2,6 +2,7 @@ package se.paldan.json.generators;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import org.json.JSONObject;
 import org.junit.Assert;
 import org.junit.Rule;
@@ -11,6 +12,7 @@ import se.paldan.json.junit.JsonGeneratorRule;
 import java.io.IOException;
 import java.util.List;
 
+@SuppressFBWarnings({"UUF_UNUSED_PUBLIC_OR_PROTECTED_FIELD","UWF_UNWRITTEN_PUBLIC_OR_PROTECTED_FIELD"})
 public class FuzzingTest {
     static class ExampleSchemaObject {
         static class NestedObject {

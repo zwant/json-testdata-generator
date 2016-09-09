@@ -8,10 +8,25 @@ import org.apache.commons.lang3.RandomUtils;
 import org.everit.json.schema.NumberSchema;
 
 import java.math.BigDecimal;
+import java.util.Optional;
 
-public class NumberGenerator implements JsonGenerator<NumberSchema> {
+class NumberGenerator implements JsonGenerator<NumberSchema> {
     @Override
     public NumericNode build(NumberSchema schema) {
+        Optional<String> maybeExample = GeneratorUtils.getExampleValue(schema);
+        if(maybeExample.isPresent()) {
+            String exampleString = maybeExample.get();
+            try {
+                return IntNode.valueOf(Integer.parseInt(exampleString));
+            } catch (NumberFormatException e) {
+                try {
+                    return DecimalNode.valueOf(BigDecimal.valueOf(Double.parseDouble(exampleString)));
+                } catch (NumberFormatException ex) {
+                    throw new RuntimeException("Unable to parse example value " + exampleString
+                            + " as either Int or Decimal!");
+                }
+            }
+        }
         Number maybeMin = schema.getMinimum();
         Number maybeMax = schema.getMaximum();
         if(schema.requiresInteger()) {

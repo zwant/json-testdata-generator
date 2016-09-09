@@ -1,0 +1,8 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "String",
+  "type": "string",
+  "pattern": "^[0-9]+",
+  "minLength": 5,
+  "maxLength": 10
+}

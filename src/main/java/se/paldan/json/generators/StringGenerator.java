@@ -7,6 +7,7 @@ import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.lang3.RandomUtils;
 import org.everit.json.schema.StringSchema;
 
+import java.util.Optional;
 import java.util.regex.Pattern;
 
 public class StringGenerator implements JsonGenerator<StringSchema> {
@@ -14,6 +15,11 @@ public class StringGenerator implements JsonGenerator<StringSchema> {
 
     @Override
     public TextNode build(StringSchema schema) {
+        Optional<String> maybeExample = GeneratorUtils.getExampleValue(schema);
+        if(maybeExample.isPresent()) {
+            return TextNode.valueOf(maybeExample.get());
+        }
+
         int min = getMinLength(schema.getMinLength());
         int max = getMaxLength(min, schema.getMaxLength());
         Pattern regexPattern = schema.getPattern();

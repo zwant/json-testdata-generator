@@ -5,12 +5,11 @@ import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.everit.json.schema.ObjectSchema;
 import org.everit.json.schema.Schema;
-import se.paldan.json.generators.utils.GeneratorUtils;
 
 import java.util.List;
 import java.util.Map;
 
-public class ObjectGenerator implements JsonGenerator<ObjectSchema> {
+class ObjectGenerator implements JsonGenerator<ObjectSchema> {
     private void addSubSchemas(ObjectNode node, ObjectSchema schema) throws IllegalAccessException, InstantiationException {
         List<String> requiredProps = schema.getRequiredProperties();
         for(Map.Entry<String, Schema> subSchema : schema.getPropertySchemas().entrySet()) {
@@ -40,6 +39,15 @@ public class ObjectGenerator implements JsonGenerator<ObjectSchema> {
 
     private boolean shouldIncludeProperty(List<String> requiredProps, String propertyName) {
         // More likely to get it included, than not
-        return requiredProps.contains(propertyName) || Math.random() < 0.8;
+        switch(RootGenerator.getOptions().getOptionalsBehaviour()) {
+            case INCLUDE_OPTIONALS:
+                return true;
+            case EXCLUDE_OPTIONALS:
+                return requiredProps.contains(propertyName);
+            case RANDOM_OPTIONALS:
+                return requiredProps.contains(propertyName) || Math.random() < 0.5;
+            default:
+                throw new UnsupportedOperationException();
+        }
     }
 }

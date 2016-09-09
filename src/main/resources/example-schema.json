@@ -5,7 +5,7 @@
   "type": "object",
   "properties": {
     "string_min_only": {
-      "description": "A string with a min requirement only",
+      "description": "A string with a min requirement only <example>hejjaghetersvante</example>",
       "type": "string",
       "minLength": 10
     },

@@ -7,14 +7,13 @@ import com.sun.istack.internal.Nullable;
 import org.apache.commons.lang3.RandomUtils;
 import org.everit.json.schema.ArraySchema;
 import org.everit.json.schema.Schema;
-import se.paldan.json.generators.utils.GeneratorUtils;
 
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class ArrayGenerator implements JsonGenerator<ArraySchema> {
+class ArrayGenerator implements JsonGenerator<ArraySchema> {
     @Override
     public ArrayNode build(ArraySchema schema) {
         ArrayNode node = JsonNodeFactory.instance.arrayNode();

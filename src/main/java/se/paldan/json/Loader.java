@@ -6,6 +6,7 @@ import org.everit.json.schema.Schema;
 import org.everit.json.schema.loader.SchemaLoader;
 import org.json.JSONObject;
 import org.json.JSONTokener;
+import se.paldan.json.generators.GeneratorOptions;
 import se.paldan.json.generators.RootGenerator;
 
 import java.io.IOException;
@@ -23,8 +24,8 @@ public class Loader {
     public static JsonNode getJsonFromSchema(JSONObject schemaObject) {
         // Root schema will always be an ObjectSchema!
         Schema rootSchema = SchemaLoader.load(schemaObject);
-
-        return new RootGenerator().build(rootSchema);
+        RootGenerator.setOptions(GeneratorOptions.of(GeneratorOptions.OptionalsBehaviour.RANDOM_OPTIONALS));
+        return RootGenerator.build(rootSchema);
     }
 
     public static JsonNode getJsonFromSchemaFile(InputStream inputStream) {

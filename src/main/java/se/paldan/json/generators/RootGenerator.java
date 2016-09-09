@@ -2,25 +2,20 @@ package se.paldan.json.generators;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import org.everit.json.schema.Schema;
-import se.paldan.json.generators.utils.GeneratorUtils;
 
 
-public class RootGenerator {
-    public static class RootGeneratorOptions {
-        public static final int TEST = 1;
+public final class RootGenerator {
+    private static GeneratorOptions options = GeneratorOptions.withDefaults();
+
+    public static void setOptions(GeneratorOptions opts) {
+        options = opts;
     }
 
-    private RootGeneratorOptions options;
-
-    public RootGenerator() {
-        this.options = new RootGeneratorOptions();
+    public static GeneratorOptions getOptions() {
+        return options;
     }
 
-    public RootGenerator(RootGeneratorOptions options) {
-        this.options = options;
-    }
-
-    public JsonNode build(Schema schema) {
+    public static JsonNode build(Schema schema) {
         Class<? extends JsonGenerator> rootClass = GeneratorUtils.determineGeneratorType(schema);
         try {
             return rootClass.newInstance().build(schema);

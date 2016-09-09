@@ -28,3 +28,4 @@ Known Not supported
 -------------------
 - References
 - Arrays with multiple schemas
+- "format" parameter to string schemas

@@ -1,0 +1,9 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "String",
+  "description": "A simple string <example>lolcat</example>",
+  "type": "string",
+  "pattern": "^[locat]+",
+  "minLength": 5,
+  "maxLength": 10
+}
