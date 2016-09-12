@@ -107,3 +107,6 @@ You can control the behaviour of generating optional fields by setting Generator
 `RANDOM_OPTIONALS` will make the generator randomly generate non-required fields in the schema. This can make unit tests in-deterministic, as it will trigger different code paths every time.
 However, `RANDOM_OPTIONALS` is great when fuzzing your parsing code, as it will help you test different permutations of combining optional fields.
 
+TODO
+------
+- Support for fetching JSON schema from a URL (which is very helpful if the schema definition lives in a different code repo for example)
