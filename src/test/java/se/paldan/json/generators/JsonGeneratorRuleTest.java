@@ -26,4 +26,16 @@ public class JsonGeneratorRuleTest {
         JsonNode jsonObject = jsonGeneratorExcludeOptionals.getJsonNode();
         Assert.assertFalse(jsonObject.has("string_min_only"));
     }
+
+    @Test
+    public void testGetSchema() {
+        Assert.assertNotNull(jsonGeneratorIncludeOptionals.getSchema());
+        Assert.assertNotNull(jsonGeneratorIncludeOptionals.getSchemaAsString());
+    }
+
+    @Test
+    public void testGetJson() {
+        Assert.assertNotNull(jsonGeneratorIncludeOptionals.getJsonNode());
+        Assert.assertNotNull(jsonGeneratorIncludeOptionals.getJsonString());
+    }
 }

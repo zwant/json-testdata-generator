@@ -91,6 +91,9 @@ public class JsonGeneratorRule extends ExternalResource {
     public Schema getSchema() {
         return schema;
     }
+    public String getSchemaAsString() {
+        return this.schema.toString();
+    }
 
     public JsonNode getJsonNode() {
         return jsonNode;
