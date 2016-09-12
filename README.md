@@ -87,11 +87,12 @@ Generation Options
 ------------------
 Examples
 --------
-Examples can be created by adding a <example>[your-example-here]</example> tag in the description of the json schema.
+Examples can be created by adding a `<example>[your-example-here]</example>` tag in the description of the json schema.
 An example can be used to get more deterministic behaviour of tests.
 If GeneratorOptions.USE_EXAMPLES is set, any examples provided in the JSON schema will be used for that field when generating JSON. 
 
-*Warning*
+*Warning!*
+
 When `USE_EXAMPLES` is used, the generator disregards any other requirements set by the JSON schema (for example, you could provide an example string that does not fulfill the min and max length restrictions of the JSON schema).
 That means that if your examples are incorrect, it will produce a JSON that does not validate properly against the schema.
 
