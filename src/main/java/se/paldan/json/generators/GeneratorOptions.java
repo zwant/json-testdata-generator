@@ -13,7 +13,7 @@ public class GeneratorOptions {
     }
 
     private OptionalsBehaviour optionalsBehaviour = OptionalsBehaviour.RANDOM_OPTIONALS;
-    private ExamplesBehaviour examplesBehaviour = ExamplesBehaviour.NO_EXAMPLES;
+    private ExamplesBehaviour examplesBehaviour = ExamplesBehaviour.USE_EXAMPLES;
 
     private GeneratorOptions() {}
 
