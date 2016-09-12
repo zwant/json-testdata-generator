@@ -1,3 +1,8 @@
+Json Testdata Generator
+----------------------
+This tool generates valid JSON from a JSON schema.
+This can be very helpful if testing parsing of JSON in integration scenarios, when you have access to the producer's JSON schema. And you don't want to manually create test-data (which is boring and error-prone!)
+
 Generation Options
 ------------------
 Examples
