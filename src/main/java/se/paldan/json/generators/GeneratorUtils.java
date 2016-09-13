@@ -17,6 +17,8 @@ class GeneratorUtils {
             return NumberGenerator.class;
         } else if (schema instanceof ArraySchema) {
             return ArrayGenerator.class;
+        } else if (schema instanceof BooleanSchema) {
+            return BooleanGenerator.class;
         }
         throw new IllegalArgumentException("Are you kidding me?! I cant build " + schema.getClass());
     }
